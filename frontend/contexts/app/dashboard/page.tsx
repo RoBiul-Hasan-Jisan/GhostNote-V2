@@ -45,8 +45,7 @@ const TYPE_CONFIG: Record<string, { label: string; emoji: string; cls: string }>
   feedback: { label: 'Feedback', emoji: '💬', cls: 'chip-feedback' },
 };
 
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://ghost-note-v2.vercel.app/';
-
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://ghost-note-v2.vercel.app';
 export default function DashboardPage() {
   const { firebaseUser, userProfile, loading, hasProfile, signOut } = useAuth();
   const router = useRouter();
