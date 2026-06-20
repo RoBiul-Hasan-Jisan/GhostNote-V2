@@ -45,7 +45,7 @@ const TYPE_CONFIG: Record<string, { label: string; emoji: string; cls: string }>
   feedback: { label: 'Feedback', emoji: '💬', cls: 'chip-feedback' },
 };
 
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://ghost-note-v2.vercel.app/';
+const APP_URL = 'https://ghost-note-v2.vercel.app/';
 
 export default function DashboardPage() {
   const { firebaseUser, userProfile, loading, hasProfile, signOut } = useAuth();
@@ -158,8 +158,7 @@ export default function DashboardPage() {
     );
   }
 
-  const shareLink = `${APP_URL}${userProfile.profileLink}`;
-
+  const shareLink = `${APP_URL}/u/${userProfile.username}`;
   return (
     <div className="min-h-screen bg-linear-to-br from-slate-950 via-purple-950/20 to-slate-950 relative overflow-hidden">
       {/* Ambient blobs */}
