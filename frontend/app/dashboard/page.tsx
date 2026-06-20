@@ -55,7 +55,7 @@ const TYPE_CONFIG: Record<string, { label: string; emoji: string; cls: string }>
   feedback: { label: 'Feedback', emoji: '💬', cls: 'chip-feedback' },
 };
 
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://ghostnote-v2.onrender.com/';
 
 export default function DashboardPage() {
   const { firebaseUser, userProfile, loading, hasProfile, signOut } = useAuth();

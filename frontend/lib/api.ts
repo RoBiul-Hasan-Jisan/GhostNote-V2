@@ -1,6 +1,6 @@
 import { auth } from './firebase';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://ghostnote-v2.onrender.com';
 
 async function getAuthHeader(): Promise<Record<string, string>> {
   const user = auth.currentUser;

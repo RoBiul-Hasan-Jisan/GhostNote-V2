@@ -18,7 +18,7 @@ app.use(helmet());
 app.use(morgan('combined'));
 app.use(express.json({ limit: '10kb' }));
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+  origin: process.env.FRONTEND_URL || 'https://ghost-note-v2.vercel.app/',
   credentials: true,
 }));
 
