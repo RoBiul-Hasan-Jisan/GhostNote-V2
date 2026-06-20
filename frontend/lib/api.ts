@@ -4,9 +4,16 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://ghostnote-v2.onrende
 
 async function getAuthHeader(): Promise<Record<string, string>> {
   const user = auth.currentUser;
-  if (!user) return {};
-  const token = await user.getIdToken();
-  return { Authorization: `Bearer ${token}` };
+
+  if (!user) {
+    throw new Error("User not logged in");
+  }
+
+  const token = await user.getIdToken(true); // 🔥 FORCE REFRESH
+
+  return {
+    Authorization: `Bearer ${token}`,
+  };
 }
 
 async function request<T>(

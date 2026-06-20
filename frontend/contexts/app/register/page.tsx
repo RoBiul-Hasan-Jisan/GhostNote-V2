@@ -63,18 +63,31 @@ export default function RegisterPage() {
     }
   };
 
-  const handleGoogleRegister = async () => {
-    setError('');
-    setLoading(true);
-    try {
-      await signInWithPopup(auth, googleProvider);
-      setStep('username');
-    } catch (err: any) {
-      setError('Google sign-in failed.');
-    } finally {
-      setLoading(false);
+const handleGoogleRegister = async () => {
+  setError('');
+  setLoading(true);
+
+  try {
+    // 1. Sign in with Google
+    const result = await signInWithPopup(auth, googleProvider);
+
+    if (!result.user) {
+      throw new Error('Google sign-in failed');
     }
-  };
+
+    // 2. Force Firebase token generation
+    await result.user.getIdToken(true);
+
+    // 3. Move to username step
+    setStep('username');
+
+  } catch (err: any) {
+    console.error(err);
+    setError('Google sign-in failed. Please try again.');
+  } finally {
+    setLoading(false);
+  }
+};
 
   const handleCreateProfile = async (e: React.FormEvent) => {
     e.preventDefault();
